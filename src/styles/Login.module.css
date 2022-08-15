@@ -1,0 +1,76 @@
+.videoContainer {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.videoOverflow {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.content {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content > * {
+  margin: 1rem 0;
+}
+
+.content h1 {
+  color: #72FFFF;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.content img {
+  height: 50px;
+}
+
+.content button {
+  background-color: #72FFFF;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  outline: none;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.content button:hover {
+  background-color: #00D7FF;
+  color: white;
+  transform: scale(1.05);
+  transition: all ease-in-out .3s;
+}
+
+
+.content button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media screen and (max-width: 720px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+}

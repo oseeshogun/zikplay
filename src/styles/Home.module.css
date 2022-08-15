@@ -1,0 +1,103 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  background: #0E0E0E;
+  color: white;
+  overflow: hidden;
+  display: flex;
+}
+
+.leftPart {
+  background: black;
+  padding: 20px 0;
+}
+
+.leftTopTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vh;
+  padding: 0 30px;
+}
+
+.leftTopTitle img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.leftAccountInfo {
+  display: flex;
+  background: #0E0E0E;
+  padding: 10px;
+  border-radius: 15px;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.leftAccountInfo *:first-child {
+  margin-right: 10px;
+}
+
+.leftAccountInfo img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.leftAccountInfo h2 {
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.sideBars {
+  margin-top: 10vh;
+}
+
+.sideBarIcon {
+  display: flex;
+  align-items: center;
+  padding: 10px 8px;
+  color: #72FFFF;
+}
+
+.sideBarIcon:hover {
+  background: #0E0E0E;
+  cursor: pointer;
+}
+
+.sideBarIconActive {
+  background: #0E0E0E;
+  color: #00D7FF;
+}
+
+.navlink {
+  text-decoration: none;
+  color: unset;
+}
+
+.sideBarIcon .name {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logOut  {
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 10px 8px;
+  display: flex;
+  align-items: center;
+  margin-top: 10vh;
+  cursor: pointer;
+  color: grey;
+}
+
+.logOut:hover {
+  color: white;
+}
+
+.logOut span {
+  margin-left: 10px;
+}
