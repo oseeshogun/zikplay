@@ -12,5 +12,6 @@ export const scopes = [
   "user-modify-playback-state",
   "playlist-read-private",
   "user-read-private",
-  "user-read-email"
+  "user-read-email",
+  "streaming"
 ]

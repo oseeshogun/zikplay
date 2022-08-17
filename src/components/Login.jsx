@@ -21,7 +21,7 @@ const Login = () => {
         <h1>Sans la Musique</h1>
         <h1>La vie serait une erreur</h1>
          <a href={loginUrl}>
-           <button> Se connecter à ZikPlay </button>
+           <button> Se connectergetMe à ZikPlay </button>
          </a>
       </div>
     </div>
