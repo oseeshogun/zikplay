@@ -1,21 +1,30 @@
-import React, { useEffect, useReducer } from "react"
-import "./App.css"
-import Spotify from "spotify-web-api-js"
-import { useLocalStorage } from "./hooks"
-import PreLoader from "./PreLoader"
-const Home = React.lazy(() => import("./components/Home"))
-const Login = React.lazy(() => import("./components/Login"))
-import Callback from "./components/Callback"
-import { zipPlayContext } from "./contexts"
-import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom"
-import { reducer, initialZikState } from "./reducer"
+import React, { useEffect, useReducer } from 'react'
+import './App.css'
+import Spotify from 'spotify-web-api-js'
+import { useLocalStorage } from './hooks'
+import PreLoader from './PreLoader'
+const Home = React.lazy(() => import('./components/Home'))
+const Login = React.lazy(() => import('./components/Login'))
+import Callback from './components/Callback'
+import { zipPlayContext } from './contexts'
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
+import { reducer, initialZikState } from './reducer'
 
 const spotify = new Spotify()
 
 export default function App() {
-  const [token, setToken] = useLocalStorage("token", null)
-  const [uri, setUri] = useLocalStorage("uri", null)
-  const [{ user }, dispatch] = useReducer(reducer, initialZikState)
+  const [token, setToken] = useLocalStorage('token', null)
+  const [uri, setUri] = useLocalStorage('uri', null)
+  const [reducerState, dispatch] = useReducer(reducer, initialZikState)
+
+  const { user } = reducerState
+
+  const onSpotifyFailed = (err) => {
+    console.log('Erreur ', err)
+    if (err.status === 401) {
+      setToken(null)
+    }
+  }
 
   useEffect(() => {
     if (token) {
@@ -26,28 +35,31 @@ export default function App() {
         .then((user) => {
           console.log(user)
           dispatch({
-            type: "SET_USER",
-            user: user,
+            type: 'SET_USER',
+            payload: user,
           })
         })
-        .catch((err) => {
-          console.log("Erreur ", err)
-          if (err.status === 401) {
-            setToken(null)
-          }
-        })
-      // spotify.getRecommendations({ limit: 5, market: "ES", seed_genres: "classical, pop, gospel" }).then(console.log).catch(console.log)
-      // spotify.getMyRecentlyPlayedTracks({ limit: 5 }).then(console.log).catch(console.log)
+        .catch(onSpotifyFailed)
     }
   }, [token])
 
   return (
     <zipPlayContext.Provider
-      value={{ token, setToken, user, spotify, uri, setUri }}
+      value={{
+        token,
+        setToken,
+        user,
+        spotify,
+        uri,
+        setUri,
+        reducerState,
+        dispatch,
+        onSpotifyFailed,
+      }}
     >
       <BrowserRouter>
         <Routes>
-          {["/", "/library", "/favorites"].map((path) => (
+          {['/', '/library/', '/favorites/'].map((path) => (
             <Route
               path={path}
               key={path}
