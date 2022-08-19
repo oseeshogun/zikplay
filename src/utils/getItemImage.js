@@ -1,3 +1,5 @@
+import defaultImage from '../assets/svgs/Mic_drop_bro.svg'
+
 export const getItemImage = (item) => {
   try {
     if (!item.images.length) return defaultImage

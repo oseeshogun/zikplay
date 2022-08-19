@@ -12,7 +12,7 @@ const PlayerContainer = styled.div`
   position: fixed;
   bottom: 0;
   width: 100vw;
-  color: white !important;
+    color: white !important;
 `
 
 const Home = () => {
@@ -38,7 +38,6 @@ const Home = () => {
             styles={{
               activeColor: '#fff',
               bgColor: '#333',
-              color: '#fff',
               loaderColor: '#fff',
               sliderColor: '#1cb954',
               trackArtistColor: '#ccc',

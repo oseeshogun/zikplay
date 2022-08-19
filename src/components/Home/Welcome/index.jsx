@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { SearchBar } from './SearchBar'
+import Search, { SearchBar } from './Search'
 import DisplayElement from '../../Utils/DisplayElement'
 import MyTopTracks from './MyTopTracks'
 import RecentlyPlayedTracks from './RecentlyPlayedTracks'
@@ -40,7 +40,10 @@ const Welcome = () => {
         search={search}
         placeholder="Musiques, Artistes ou Albums"
       />
-      <DisplayElement display={search === ''}>
+      <DisplayElement display={search.trim() !== ''}>
+        <Search search={search.trim()} />
+      </DisplayElement>
+      <DisplayElement display={search.trim() === ''}>
         <RecentlyPlayedTracks />
         <MyTopTracks />
       </DisplayElement>

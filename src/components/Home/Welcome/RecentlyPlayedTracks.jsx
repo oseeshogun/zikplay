@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { zipPlayContext } from '../../../contexts'
 import SpotifyWebApi from 'spotify-web-api-js'
 import TrackItem, { TracksContainer } from './TrackItem'
-import DisplayElement from '../../Utils/DisplayElement'
-import { ClimbingBoxLoader } from 'react-spinners'
+import LoadingItems from './LoadingItems'
 
 const Container = styled.div`
   padding: 1rem 0;
@@ -43,16 +42,14 @@ const RecentlyPlayedTracks = () => {
   return (
     <Container>
       <h1>Musiques Récemments Jouées</h1>
-      <DisplayElement display={!!recentlyPlayed}>
+      {recentlyPlayed && (
         <TracksContainer>
           {recentlyPlayed.map((track) => (
             <TrackItem track={track} key={track.uri} type="Musique" />
           ))}
         </TracksContainer>
-      </DisplayElement>
-      <DisplayElement display={!recentlyPlayed}>
-        <ClimbingBoxLoader color="#fff" />
-      </DisplayElement>
+      )}
+      <LoadingItems display={!recentlyPlayed} />
     </Container>
   )
 }

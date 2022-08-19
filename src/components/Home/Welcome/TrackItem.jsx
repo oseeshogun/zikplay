@@ -13,7 +13,7 @@ const Container = styled.div`
   width: 100%;
   padding: 10px;
   padding-bottom: 15px;
-  border-radius: 5px;
+  border-radius: ${props => props.isArtiste ? '15px': '5px'};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,13 +33,18 @@ const Container = styled.div`
   &:hover .icon-container {
     opacity: 1;
   }
+
+  &:hover .icon-container:hover {
+    transform: scale(1.1)
+  }
 `
 
 const Image = styled.img`
   height: 10rem;
   width: 10rem;
-  border-radius: 5px;
+  border-radius: ${props => props.isArtiste ? '50%' : '5px'};
   margin-bottom: 15px;
+  object-fit: cover;
 `
 
 const TypeText = styled.p`
@@ -74,7 +79,7 @@ export const TracksContainer = styled.div`
   padding: 10px 0;
 `
 
-const TrackItem = ({ track, type }) => {
+const TrackItem = ({ track, type, isArtiste }) => {
   const { setUri } = useContext(zipPlayContext)
 
   const [loading, setLoading] = useState(false)
@@ -90,8 +95,8 @@ const TrackItem = ({ track, type }) => {
   }
 
   return (
-    <Container onClick={onTrackClick}>
-      <Image src={image} alt={name} />
+    <Container onClick={onTrackClick} isArtiste={isArtiste}>
+      <Image src={image} alt={name} isArtiste={isArtiste ?? false} />
       <h3>
         <TextTruncate line={2} text={name} />
       </h3>

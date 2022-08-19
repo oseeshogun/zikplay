@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { zipPlayContext } from '../../../contexts'
 import SpotifyWebApi from 'spotify-web-api-js'
 import TrackItem, { TracksContainer } from './TrackItem'
+import LoadingItems from './LoadingItems'
 
 const Container = styled.div`
   padding: 1rem 0;
@@ -43,6 +44,7 @@ const MyTopTracks = () => {
           ))}
         </TracksContainer>
       )}
+      <LoadingItems display={!myTopTracks} />
     </Container>
   )
 }
