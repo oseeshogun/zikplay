@@ -8,6 +8,7 @@ import Favorites from './Favorites'
 const Container = styled.div`
   height: 100%;
   width: 100%;
+  overflow: hidden;
 `
 
 const MounteElement = ({ path, element }) => {
@@ -19,7 +20,6 @@ const MounteElement = ({ path, element }) => {
 }
 
 const HomeRightPart = () => {
-
   return (
     <Container>
       <MounteElement path="/" element={<Welcome />} />

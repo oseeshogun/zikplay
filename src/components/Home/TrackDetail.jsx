@@ -41,6 +41,19 @@ const TrackDetaiContainer = styled.div`
     width: 20%;
     padding-left: 10px;
   }
+
+  @media (max-width: 720px) {
+    margin: 5px 2px;
+    padding: 5px 3px;
+
+    & > *:nth-child(2) {
+      display: none;
+    }
+
+    & > *:first-child {
+      width: 80%;
+    }
+  }
 `
 
 const TrackTitle = styled.div`
@@ -119,9 +132,9 @@ const TrackDetail = ({ data, count }) => {
       <TrackTitle>
         <span>{count}</span>
         <TrackImage src={image} alt={track.name} />
-        <h4 title={track.name}>
+        <div title={track.name}>
           <TextTruncate line={2} element="h4" text={track.name} />
-        </h4>
+        </div>
       </TrackTitle>
       <div title={track.album.name}>
         <TextTruncate line={2} element="h4" text={track.album.name} />

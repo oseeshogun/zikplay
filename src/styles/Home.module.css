@@ -1,7 +1,7 @@
 .container {
   height: 100vh;
   width: 100vw;
-  background: #0E0E0E;
+  background: #0e0e0e;
   color: white;
   overflow: hidden;
   display: flex;
@@ -27,7 +27,7 @@
 
 .leftAccountInfo {
   display: flex;
-  background: #0E0E0E;
+  background: #0e0e0e;
   padding: 10px;
   border-radius: 15px;
   align-items: center;
@@ -58,17 +58,17 @@
   display: flex;
   align-items: center;
   padding: 10px 8px;
-  color: #72FFFF;
+  color: #72ffff;
 }
 
 .sideBarIcon:hover {
-  background: #0E0E0E;
+  background: #0e0e0e;
   cursor: pointer;
 }
 
 .sideBarIconActive {
-  background: #0E0E0E;
-  color: #00D7FF;
+  background: #0e0e0e;
+  color: #00d7ff;
 }
 
 .navlink {
@@ -82,7 +82,7 @@
   font-weight: bold;
 }
 
-.logOut  {
+.logOut {
   background: transparent;
   outline: none;
   border: none;
@@ -100,4 +100,10 @@
 
 .logOut span {
   margin-left: 10px;
+}
+
+@media (max-width: 720px) {
+  .container {
+    margin-top: 10vh;
+  }
 }

@@ -46,6 +46,11 @@ const Image = styled.img`
   border-radius: ${(props) => (props.isArtiste ? '50%' : '5px')};
   margin-bottom: 15px;
   object-fit: cover;
+
+  @media (max-width: 720px) {
+    height: 35vw;
+    width: 35vw;
+  }
 `
 
 const TypeText = styled.p`
@@ -86,6 +91,11 @@ export const TracksContainer = styled.div`
   grid-gap: 15px;
   grid-template-columns: repeat(auto-fill, 186px);
   padding: 10px 0;
+
+  @media (max-width: 720px) {
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, 40vw);
+  }
 `
 
 const TrackItem = ({ track, type, isArtiste }) => {
@@ -94,8 +104,6 @@ const TrackItem = ({ track, type, isArtiste }) => {
   const [loading, setLoading] = useState(false)
 
   const { name } = track
-
-  console.log(uri, track.uri)
 
   const image = getItemImage(track)
 

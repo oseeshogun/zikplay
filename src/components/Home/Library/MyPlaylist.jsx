@@ -20,6 +20,10 @@ const PlaylistContainer = styled.div`
   padding: 20px;
   padding-bottom: 10vh;
   overflow-y: scroll;
+
+  @media (max-width: 720px) {
+    padding-bottom: 20vh;
+  }
 `
 
 const FormContainer = styled.form`
@@ -28,6 +32,9 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 720px) {
+  }
 `
 
 const Image = styled.img`
@@ -64,6 +71,10 @@ const CreatePlaylistInput = styled.input`
   color: white;
   margin: 10px 0;
   width: 30%;
+
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `
 
 const RadioContainer = styled.div`
@@ -82,6 +93,10 @@ const CreatePlaylistActions = styled.div`
   width: 30%;
 
   & > button {
+    width: 100%;
+  }
+
+  @media (max-width: 720px) {
     width: 100%;
   }
 `

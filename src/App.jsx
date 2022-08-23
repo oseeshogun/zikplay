@@ -30,7 +30,6 @@ export default function App() {
   useEffect(() => {
     if (token) {
       spotify.setAccessToken(token)
-
       spotify
         .getMe()
         .then((user) => {

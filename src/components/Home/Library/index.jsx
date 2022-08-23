@@ -10,6 +10,11 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
+
+  @media (max-width: 720px) {
+    padding: 10px;
+    padding-bottom: 10vh;
+  }
 `
 const Tabs = styled.div`
   display: flex;
@@ -20,6 +25,22 @@ const Tabs = styled.div`
 
   & .create__playlist {
     margin-left: 30px;
+  }
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+
+    & > *:first-child {
+      margin-right: 0;
+    }
+
+    & .create__playlist {
+      margin-left: 0;
+    }
+
+    & > * {
+      margin: 10px 0;
+    }
   }
 `
 
@@ -44,6 +65,10 @@ const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 20px;
+
+  @media (max-width: 720px) {
+    margin-top: 0;
+  }
 `
 
 const Library = () => {
@@ -59,27 +84,29 @@ const Library = () => {
 
   return (
     <Container>
-      <Tabs>
-        <Tab active={isPlaylists} onClick={() => setTab(0)}>
-          Playlists
-        </Tab>
-        <Tab active={isArtists} onClick={() => setTab(1)}>
-          Artistes
-        </Tab>
-        {myPlaylists && myPlaylists.length !== 0 && (
-          <Tab
-            active={true}
-            className="create__playlist"
-            onClick={() => {
-              setUserWantNewPlaylist(true)
-              setTab(0)
-            }}
-          >
-            <MdAddCircle style={{ marginRight: '10px' }} />
-            <span>Créer un playlist</span>
+      <DisplayElement display={!userWantNewPlaylist}>
+        <Tabs>
+          <Tab active={isPlaylists} onClick={() => setTab(0)}>
+            Playlists
           </Tab>
-        )}
-      </Tabs>
+          <Tab active={isArtists} onClick={() => setTab(1)}>
+            Artistes
+          </Tab>
+          {myPlaylists && !isArtists && myPlaylists.length !== 0 && (
+            <Tab
+              active={true}
+              className="create__playlist"
+              onClick={() => {
+                setUserWantNewPlaylist(true)
+                setTab(0)
+              }}
+            >
+              <MdAddCircle style={{ marginRight: '10px' }} />
+              <span>Créer un playlist</span>
+            </Tab>
+          )}
+        </Tabs>
+      </DisplayElement>
       <ContentContainer>
         <DisplayElement display={isPlaylists}>
           <MyPlaylist

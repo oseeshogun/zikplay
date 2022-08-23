@@ -5,6 +5,7 @@ import { zikPlayContext } from '../../contexts'
 import s from '../../styles/Home.module.css'
 import HomeLeftPart from './HomeLeftPart'
 import HomeRightPart from './HomeRightPart'
+import MobileNavbar from './MobileNavbar'
 
 const PlayerContainer = styled.div`
   position: fixed;
@@ -26,6 +27,8 @@ const webPlayerStyle = {
 const Home = () => {
   const { token, uri, play, setPlay } = useContext(zikPlayContext)
 
+  const [showMobileNav, setShowMobileNav] = useState(false)
+
   useEffect(() => {
     setPlay(true)
   }, [uri])
@@ -46,9 +49,17 @@ const Home = () => {
     }
   })
 
+  const onToggleSidenav = () => {
+    setShowMobileNav(!showMobileNav)
+  }
+
   return (
     <div className={s.container}>
-      <HomeLeftPart />
+      <MobileNavbar onToggleSidenav={onToggleSidenav} />
+      <HomeLeftPart
+        showMobileNav={showMobileNav}
+        onToggleSidenav={onToggleSidenav}
+      />
       <HomeRightPart />
       {uri && (
         <PlayerContainer>

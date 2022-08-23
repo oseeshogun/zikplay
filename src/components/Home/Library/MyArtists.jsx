@@ -13,6 +13,11 @@ const Container = styled.div`
   padding: 10px 0;
   padding-bottom: 20vh;
   overflow-y: scroll;
+
+  @media (max-width: 720px) {
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, 40vw);
+  }
 `
 
 const MyArtists = () => {
@@ -42,14 +47,15 @@ const MyArtists = () => {
 
   return (
     <Container>
-      {myTopArtists && myTopArtists.map((artist) => (
-        <TrackItem
-          track={artist}
-          key={artist.uri}
-          type="Artiste"
-          isArtiste={true}
-        />
-      ))}
+      {myTopArtists &&
+        myTopArtists.map((artist) => (
+          <TrackItem
+            track={artist}
+            key={artist.uri}
+            type="Artiste"
+            isArtiste={true}
+          />
+        ))}
     </Container>
   )
 }

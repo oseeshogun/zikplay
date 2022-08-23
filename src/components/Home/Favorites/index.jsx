@@ -12,6 +12,11 @@ const Container = styled.div`
   height: 100%;
   padding: 20px 15%;
   padding-bottom: 20vh;
+
+  @media (max-width: 720px) {
+    padding: 10px 5%;
+    overflow-y: hidden;
+  }
 `
 
 const PlayIconContainer = styled.div`
@@ -28,6 +33,10 @@ const PlayIconContainer = styled.div`
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 720px) {
+    padding: 5px;
   }
 `
 
@@ -63,6 +72,16 @@ const TrackListHeader = styled.div`
   & h2 {
     font-size: 20px;
   }
+
+  @media (max-width: 720px) {
+    & > *:nth-child(2) {
+      display: none;
+    }
+
+    & > *:first-child {
+      width: 70%;
+    }
+  }
 `
 
 const TrackListContainer = styled.div`
@@ -71,6 +90,10 @@ const TrackListContainer = styled.div`
   overflow-y: scroll;
   padding-bottom: 15vh;
   margin-top: 10px;
+
+  @media (max-width: 720px) {
+    padding-bottom: 50vh;
+  }
 `
 
 const Favorites = () => {
