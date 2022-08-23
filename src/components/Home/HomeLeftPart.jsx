@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom"
 import { IoLibraryOutline } from 'react-icons/io5'
 import { MdFavorite } from 'react-icons/md'
 import { RiAccountCircleLine, RiHomeSmile2Line, RiLogoutCircleRLine } from 'react-icons/ri'
-import { zipPlayContext } from '../../contexts'
+import { zikPlayContext } from '../../contexts'
 import s from '../../styles/Home.module.css'
 import logo from '../../assets/images/zikplay.png'
 import SideBarIcon from './SideBarIcon'
 
 const HomeLeftPart = () => {
 
-  const { user, setToken } = useContext(zipPlayContext)
+  const { user, setToken } = useContext(zikPlayContext)
 
   const logOut = () => {
     setToken(null)

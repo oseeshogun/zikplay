@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useState, useReducer } from 'react'
 import './App.css'
 import Spotify from 'spotify-web-api-js'
 import { useLocalStorage } from './hooks'
@@ -6,7 +6,7 @@ import PreLoader from './PreLoader'
 const Home = React.lazy(() => import('./components/Home'))
 const Login = React.lazy(() => import('./components/Login'))
 import Callback from './components/Callback'
-import { zipPlayContext } from './contexts'
+import { zikPlayContext } from './contexts'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
 import { reducer, initialZikState } from './reducer'
 
@@ -15,6 +15,7 @@ const spotify = new Spotify()
 export default function App() {
   const [token, setToken] = useLocalStorage('token', null)
   const [uri, setUri] = useLocalStorage('uri', null)
+  const [play, setPlay] = useState(false)
   const [reducerState, dispatch] = useReducer(reducer, initialZikState)
 
   const { user } = reducerState
@@ -44,7 +45,7 @@ export default function App() {
   }, [token])
 
   return (
-    <zipPlayContext.Provider
+    <zikPlayContext.Provider
       value={{
         token,
         setToken,
@@ -55,6 +56,8 @@ export default function App() {
         reducerState,
         dispatch,
         onSpotifyFailed,
+        play,
+        setPlay,
       }}
     >
       <BrowserRouter>
@@ -90,6 +93,6 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
-    </zipPlayContext.Provider>
+    </zikPlayContext.Provider>
   )
 }

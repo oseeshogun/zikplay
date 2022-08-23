@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 import { MdSearch } from 'react-icons/md'
 import styled from 'styled-components'
-import { zipPlayContext } from '../../../contexts'
+import { zikPlayContext } from '../../../contexts'
 import SpotifyWebApi from 'spotify-web-api-js'
-import TrackItem, { TracksContainer } from './TrackItem'
+import TrackItem, { TracksContainer } from '../TrackItem'
 import LoadingItems from './LoadingItems'
 
 const Container = styled.div`
@@ -62,7 +62,7 @@ const Search = ({ search }) => {
    */
 
   /** @type {ZikContext} */
-  const { spotify, onSpotifyFailed } = useContext(zipPlayContext)
+  const { spotify, onSpotifyFailed } = useContext(zikPlayContext)
 
   const [{ albums, artists, playlists, tracks }, setResult] = useState({})
 

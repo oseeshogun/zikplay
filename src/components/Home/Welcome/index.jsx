@@ -11,23 +11,6 @@ const Container = styled.div`
   padding: 20px;
   padding-bottom: 10vh;
   overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `
 
 const Welcome = () => {

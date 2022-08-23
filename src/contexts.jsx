@@ -1,5 +1,5 @@
 import { createContext } from "react"
 
-const zipPlayContext = createContext()
+const zikPlayContext = createContext()
 
-export { zipPlayContext }
+export { zikPlayContext }

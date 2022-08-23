@@ -1,19 +1,20 @@
 import styled from 'styled-components'
 import TextTruncate from 'react-text-truncate'
 import Spinner from 'react-spinner-material'
-import { getItemImage } from '../../../utils/getItemImage'
+import { getItemImage } from '../../utils/getItemImage'
 import { RiPlayFill } from 'react-icons/ri'
 import { useContext } from 'react'
-import { zipPlayContext } from '../../../contexts'
+import { zikPlayContext } from '../../contexts'
 import { useState } from 'react'
-import DisplayElement from '../../Utils/DisplayElement'
+import DisplayElement from '../Utils/DisplayElement'
+import SoundGif from '../../assets/images/sound.gif'
 
 const Container = styled.div`
   background: black;
   width: 100%;
   padding: 10px;
   padding-bottom: 15px;
-  border-radius: ${props => props.isArtiste ? '15px': '5px'};
+  border-radius: ${(props) => (props.isArtiste ? '15px' : '5px')};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,14 +36,14 @@ const Container = styled.div`
   }
 
   &:hover .icon-container:hover {
-    transform: scale(1.1)
+    transform: scale(1.1);
   }
 `
 
 const Image = styled.img`
   height: 10rem;
   width: 10rem;
-  border-radius: ${props => props.isArtiste ? '50%' : '5px'};
+  border-radius: ${(props) => (props.isArtiste ? '50%' : '5px')};
   margin-bottom: 15px;
   object-fit: cover;
 `
@@ -71,6 +72,14 @@ const PlayerIconContainer = styled.div`
   }
 `
 
+const SoundImage = styled.img`
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  margin: 5px;
+  border-radius: 10px;
+`
+
 export const TracksContainer = styled.div`
   width: 100%;
   display: grid;
@@ -80,11 +89,13 @@ export const TracksContainer = styled.div`
 `
 
 const TrackItem = ({ track, type, isArtiste }) => {
-  const { setUri } = useContext(zipPlayContext)
+  const { uri, setUri, play } = useContext(zikPlayContext)
 
   const [loading, setLoading] = useState(false)
 
   const { name } = track
+
+  console.log(uri, track.uri)
 
   const image = getItemImage(track)
 
@@ -102,11 +113,14 @@ const TrackItem = ({ track, type, isArtiste }) => {
       </h3>
       <TypeText>{type}</TypeText>
       <PlayerIconContainer className="icon-container">
-        <DisplayElement display={!loading}>
+        <DisplayElement display={(!loading && uri !== track.uri) || !play}>
           <RiPlayFill color="#333" size={30} />
         </DisplayElement>
         <DisplayElement display={loading}>
           <Spinner radius={30} color={'#333'} stroke={2} visible={true} />
+        </DisplayElement>
+        <DisplayElement display={uri === track.uri && !loading && play}>
+          <SoundImage src={SoundGif} alt="Soung" />
         </DisplayElement>
       </PlayerIconContainer>
     </Container>

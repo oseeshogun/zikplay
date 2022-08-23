@@ -2,6 +2,9 @@ export const initialZikState = {
   user: null,
   myTopTracks: null,
   recentlyPlayed: null,
+  myPlaylists: null,
+  myTopArtists: null,
+  mySavedTracks: null,
 }
 
 export const reducer = (state, action) => {
@@ -20,6 +23,21 @@ export const reducer = (state, action) => {
       return {
         ...state,
         recentlyPlayed: action.payload,
+      }
+    case 'SET_MY_PLAYLISTS':
+      return {
+        ...state,
+        myPlaylists: action.payload,
+      }
+    case 'SET_MY_TOP_ARTISTS':
+      return {
+        ...state,
+        myTopArtists: action.payload,
+      }
+    case 'SET_MY_SAVED_TRACKS':
+      return {
+        ...state,
+        mySavedTracks: action.payload,
       }
     default:
       return state

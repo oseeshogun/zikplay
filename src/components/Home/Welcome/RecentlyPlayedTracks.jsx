@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
-import { zipPlayContext } from '../../../contexts'
+import { zikPlayContext } from '../../../contexts'
 import SpotifyWebApi from 'spotify-web-api-js'
-import TrackItem, { TracksContainer } from './TrackItem'
+import TrackItem, { TracksContainer } from '../TrackItem'
 import LoadingItems from './LoadingItems'
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const RecentlyPlayedTracks = () => {
 
   /** @type {ZikContext} */
   const { reducerState, spotify, onSpotifyFailed, dispatch } =
-    useContext(zipPlayContext)
+    useContext(zikPlayContext)
 
   const { recentlyPlayed } = reducerState
 

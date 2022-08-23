@@ -1,15 +1,21 @@
 import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
-import { zikPlayContext } from '../../../contexts'
 import SpotifyWebApi from 'spotify-web-api-js'
-import TrackItem, { TracksContainer } from '../TrackItem'
-import LoadingItems from './LoadingItems'
+import { zikPlayContext } from '../../../contexts'
+import TrackItem from '../TrackItem'
 
 const Container = styled.div`
-  padding: 1rem 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, 186px);
+  padding: 10px 0;
+  padding-bottom: 20vh;
+  overflow-y: scroll;
 `
 
-const MyTopTracks = () => {
+const MyArtists = () => {
   /**
    * @typedef {Object} ZikContext
    * @property {SpotifyWebApi.SpotifyWebApiJs} spotify
@@ -20,14 +26,14 @@ const MyTopTracks = () => {
   const { reducerState, spotify, onSpotifyFailed, dispatch } =
     useContext(zikPlayContext)
 
-  const { myTopTracks } = reducerState
+  const { myTopArtists } = reducerState
 
   useEffect(() => {
     spotify
-      .getMyTopTracks({ limit: 5 })
+      .getMyTopArtists()
       .then((data) => {
         dispatch({
-          type: 'SET_TOP_TRACKS',
+          type: 'SET_MY_TOP_ARTISTS',
           payload: data.items,
         })
       })
@@ -36,17 +42,16 @@ const MyTopTracks = () => {
 
   return (
     <Container>
-      <h1>Top Musiques </h1>
-      {myTopTracks && (
-        <TracksContainer>
-          {myTopTracks.map((track) => (
-            <TrackItem track={track} key={track.uri} type="Musique" />
-          ))}
-        </TracksContainer>
-      )}
-      <LoadingItems display={!myTopTracks} />
+      {myTopArtists && myTopArtists.map((artist) => (
+        <TrackItem
+          track={artist}
+          key={artist.uri}
+          type="Artiste"
+          isArtiste={true}
+        />
+      ))}
     </Container>
   )
 }
 
-export default MyTopTracks
+export default MyArtists
