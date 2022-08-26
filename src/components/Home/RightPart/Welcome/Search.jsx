@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from 'react'
 import { MdSearch } from 'react-icons/md'
 import styled from 'styled-components'
-import { zikPlayContext } from '../../../contexts'
+import { zikPlayContext } from '../../../../contexts'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import SpotifyWebApi from 'spotify-web-api-js'
-import TrackItem, { TracksContainer } from '../TrackItem'
+import TrackItem, { TracksContainer } from '../../components/TrackItem'
 import LoadingItems from './LoadingItems'
 
 const Container = styled.div`

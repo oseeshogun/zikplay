@@ -1,10 +1,11 @@
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import SpotifyWebApi from 'spotify-web-api-js'
 import Spinner from 'react-spinner-material'
-import { zikPlayContext } from '../../../contexts'
-import MusicBro from '../../../assets/svgs/Music_bro.svg'
-import TrackItem, { TracksContainer } from '../TrackItem'
+import { zikPlayContext } from '../../../../contexts'
+import MusicBro from '../../../../assets/svgs/Music_bro.svg'
+import TrackItem, { TracksContainer } from '../../components/TrackItem'
 
 const Container = styled.div`
   width: 100%;
@@ -181,7 +182,6 @@ const MyPlaylist = ({ userWantNewPlaylist, setUserWantNewPlaylist }) => {
 
   const getPlaylists = async (reset = false) => {
     const data = await spotify.getUserPlaylists(user.id)
-    console.log(data)
     dispatch({
       type: 'SET_MY_PLAYLISTS',
       payload: data.items,

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import Search, { SearchBar } from './Search'
-import DisplayElement from '../../Utils/DisplayElement'
+import DisplayElement from '../../../Utils/DisplayElement'
 import MyTopTracks from './MyTopTracks'
 import RecentlyPlayedTracks from './RecentlyPlayedTracks'
 

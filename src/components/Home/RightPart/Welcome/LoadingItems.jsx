@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import DisplayElement from '../../Utils/DisplayElement'
+import DisplayElement from '../../../Utils/DisplayElement'
 import { ClimbingBoxLoader } from 'react-spinners'
 
 const LoaderWrapper = styled.div`

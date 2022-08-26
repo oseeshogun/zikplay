@@ -5,7 +5,6 @@ import { AUTH_ENDPOINT, CLIENT_ID, scopes, RESPONSE_TYPE } from "../config";
 
 const Login = () => {
   const REDIRECT_URI = (window.location.origin + "/callback/");
-  console.log(REDIRECT_URI);
 
   const loginUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scopes.join(
     "%20"

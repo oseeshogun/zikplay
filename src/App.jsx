@@ -33,7 +33,6 @@ export default function App() {
       spotify
         .getMe()
         .then((user) => {
-          console.log(user)
           dispatch({
             type: 'SET_USER',
             payload: user,

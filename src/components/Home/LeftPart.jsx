@@ -9,9 +9,10 @@ import {
   RiLogoutCircleRLine,
 } from 'react-icons/ri'
 import { zikPlayContext } from '../../contexts'
-import s from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import logo from '../../assets/images/zikplay.png'
-import SideBarIcon from './SideBarIcon'
+import SideBarIcon from './components/SideBarIcon'
+import DisplayElement from '../Utils/DisplayElement'
 
 const Container = styled.div`
   background: black;
@@ -41,7 +42,7 @@ const CloseIcon = styled(MdClose)`
   }
 `
 
-const HomeLeftPart = ({ showMobileNav, onToggleSidenav }) => {
+const LeftPart = ({ showMobileNav, onToggleSidenav }) => {
   const { user, setToken } = useContext(zikPlayContext)
 
   const logOut = () => {
@@ -51,20 +52,26 @@ const HomeLeftPart = ({ showMobileNav, onToggleSidenav }) => {
   return (
     <Container active={showMobileNav}>
       <CloseIcon size={30} onClick={onToggleSidenav} />
-      <div className={s.leftTopTitle}>
+      <div className={styles.leftTopTitle}>
         <img src={logo} alt="Logo Zikplay" />
         <h1>ZikPlay</h1>
       </div>
-      <div className={s.leftAccountInfo}>
-        {user == null || user.images.lenght == 0 ? (
+      <div className={styles.leftAccountInfo}>
+        <DisplayElement
+          display={!user || !user.images || user.images.length == 0}
+        >
           <RiAccountCircleLine size={40} />
-        ) : (
+        </DisplayElement>
+        <DisplayElement
+          display={user && user.images && user.images.length >= 0}
+        >
           <img src={user.images[0].url} alt="Avatar" />
-        )}
+        </DisplayElement>
+
         <h2>{user == null ? '' : user.display_name}</h2>
       </div>
-      <div className={s.sideBars}>
-        <NavLink to="/" className={s.navlink} onClick={onToggleSidenav}>
+      <div className={styles.sideBars}>
+        <NavLink to="/" className={styles.navlink} onClick={onToggleSidenav}>
           {({ isActive }) => (
             <SideBarIcon
               Icon={RiHomeSmile2Line}
@@ -74,7 +81,11 @@ const HomeLeftPart = ({ showMobileNav, onToggleSidenav }) => {
           )}
         </NavLink>
 
-        <NavLink to="/library" className={s.navlink} onClick={onToggleSidenav}>
+        <NavLink
+          to="/library"
+          className={styles.navlink}
+          onClick={onToggleSidenav}
+        >
           {({ isActive }) => (
             <SideBarIcon
               Icon={IoLibraryOutline}
@@ -86,7 +97,7 @@ const HomeLeftPart = ({ showMobileNav, onToggleSidenav }) => {
 
         <NavLink
           to="/favorites"
-          className={s.navlink}
+          className={styles.navlink}
           onClick={onToggleSidenav}
         >
           {({ isActive }) => (
@@ -98,8 +109,8 @@ const HomeLeftPart = ({ showMobileNav, onToggleSidenav }) => {
           )}
         </NavLink>
       </div>
-      <div className={s.expandedSpace}>
-        <button className={s.logOut} onClick={logOut}>
+      <div className={styles.expandedSpace}>
+        <button className={styles.logOut} onClick={logOut}>
           <RiLogoutCircleRLine size={20} />
           <span>Déconnexion</span>
         </button>
@@ -108,4 +119,4 @@ const HomeLeftPart = ({ showMobileNav, onToggleSidenav }) => {
   )
 }
 
-export default HomeLeftPart
+export default LeftPart

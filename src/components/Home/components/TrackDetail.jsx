@@ -2,10 +2,10 @@ import { useContext, useState } from 'react'
 import TextTruncate from 'react-text-truncate'
 import styled from 'styled-components'
 import moment from 'moment'
-import DisplayElement from '../Utils/DisplayElement.jsx'
-import { zikPlayContext } from '../../contexts.jsx'
-import { getItemImage } from '../../utils/getItemImage.js'
-import SoundGif from '../../assets/images/sound.gif'
+import DisplayElement from '../../Utils/DisplayElement.jsx'
+import { zikPlayContext } from '../../../contexts.jsx'
+import { getItemImage } from '../../../utils/getItemImage.js'
+import SoundGif from '../../../assets/images/sound.gif'
 import { RiPlayFill } from 'react-icons/ri'
 import Spinner from 'react-spinner-material'
 
@@ -115,7 +115,7 @@ const TrackDetail = ({ data, count }) => {
 
   const [loading, setLoading] = useState(false)
 
-  const { added_at, track } = data
+  const { track } = data
 
   const image = getItemImage(track.album)
 

@@ -1,6 +1,6 @@
 import { MdMenu } from 'react-icons/md'
 import styled from 'styled-components'
-import Logo from '../../assets/images/zikplay.png'
+import Logo from '../../../assets/images/zikplay.png'
 
 const Container = styled.div`
   display: none;

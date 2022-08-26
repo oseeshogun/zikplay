@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
-import { zikPlayContext } from '../../../contexts'
+import { zikPlayContext } from '../../../../contexts'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import SpotifyWebApi from 'spotify-web-api-js'
 import styled from 'styled-components'
 import { RiPlayFill } from 'react-icons/ri'
 import { MdQueryBuilder } from 'react-icons/md'
-import TrackDetail from '../TrackDetail'
+import TrackDetail from '../../components/TrackDetail'
 import Spinner from 'react-spinner-material'
 
 const Container = styled.div`
@@ -115,7 +116,6 @@ const Favorites = () => {
     spotify
       .getMySavedTracks()
       .then((data) => {
-        console.log(data)
         dispatch({
           type: 'SET_MY_SAVED_TRACKS',
           payload: data.items,

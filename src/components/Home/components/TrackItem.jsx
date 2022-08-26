@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import TextTruncate from 'react-text-truncate'
 import Spinner from 'react-spinner-material'
-import { getItemImage } from '../../utils/getItemImage'
+import { getItemImage } from '../../../utils/getItemImage'
 import { RiPlayFill } from 'react-icons/ri'
 import { useContext } from 'react'
-import { zikPlayContext } from '../../contexts'
+import { zikPlayContext } from '../../../contexts'
 import { useState } from 'react'
-import DisplayElement from '../Utils/DisplayElement'
-import SoundGif from '../../assets/images/sound.gif'
+import DisplayElement from '../../Utils/DisplayElement'
+import SoundGif from '../../../assets/images/sound.gif'
 
 const Container = styled.div`
   background: black;

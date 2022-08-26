@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react'
 import styled from 'styled-components'
-import DisplayElement from '../../Utils/DisplayElement'
+import DisplayElement from '../../../Utils/DisplayElement'
 import MyPlaylist from './MyPlaylist'
 import MyArtists from './MyArtists'
 import { MdAddCircle } from 'react-icons/md'
-import { zikPlayContext } from '../../../contexts'
+import { zikPlayContext } from '../../../../contexts'
 
 const Container = styled.div`
   width: 100%;

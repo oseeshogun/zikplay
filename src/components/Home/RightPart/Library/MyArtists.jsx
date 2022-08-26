@@ -1,8 +1,9 @@
 import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import SpotifyWebApi from 'spotify-web-api-js'
-import { zikPlayContext } from '../../../contexts'
-import TrackItem from '../TrackItem'
+import { zikPlayContext } from '../../../../contexts'
+import TrackItem from '../../components/TrackItem'
 
 const Container = styled.div`
   width: 100%;

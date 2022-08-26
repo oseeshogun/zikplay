@@ -2,10 +2,10 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import SpotifyPlayer from 'react-spotify-web-playback'
 import styled from 'styled-components'
 import { zikPlayContext } from '../../contexts'
-import s from '../../styles/Home.module.css'
-import HomeLeftPart from './HomeLeftPart'
-import HomeRightPart from './HomeRightPart'
-import MobileNavbar from './MobileNavbar'
+import styles from '../../styles/Home.module.css'
+import HomeLeftPart from './LeftPart'
+import RightPart from './RightPart'
+import MobileNavbar from './components/MobileNavbar'
 
 const PlayerContainer = styled.div`
   position: fixed;
@@ -54,13 +54,13 @@ const Home = () => {
   }
 
   return (
-    <div className={s.container}>
+    <div className={styles.container}>
       <MobileNavbar onToggleSidenav={onToggleSidenav} />
       <HomeLeftPart
         showMobileNav={showMobileNav}
         onToggleSidenav={onToggleSidenav}
       />
-      <HomeRightPart />
+      <RightPart />
       {uri && (
         <PlayerContainer>
           <SpotifyPlayer

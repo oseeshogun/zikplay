@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useLocalStorage } from '../hooks'
-import s from '../styles/Callback.module.css'
+import styles from '../styles/Callback.module.css'
 import logo from '../assets/images/zikplay.png'
 import micDrop from '../assets/svgs/Mic_drop_bro.svg'
 
@@ -28,18 +27,17 @@ const Callback = ({ setToken }) => {
   }, [])
 
   return (
-    <div className={s.container}>
+    <div className={styles.container}>
       <div>
-        <img src={logo} alt="ZikPlay Logo" className={s.logo} />
-        <h1 className={s.title}>
+        <img src={logo} alt="ZikPlay Logo" className={styles.logo} />
+        <h1 className={styles.title}>
           Bientôt, vous allez être connecté aux meilleurs de la Musique
         </h1>
-        <p className={s.patient}>Veiullez patientez...</p>
+        <p className={styles.patient}>Veiullez patientez...</p>
       </div>
-      <img src={micDrop} alt="Mic drop" className={s.svg} />
+      <img src={micDrop} alt="Mic drop" className={styles.svg} />
     </div>
   )
 }
 
 export default Callback
-

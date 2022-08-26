@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import Welcome from './Welcome'
@@ -19,7 +18,7 @@ const MounteElement = ({ path, element }) => {
   return <></>
 }
 
-const HomeRightPart = () => {
+const RightPart = () => {
   return (
     <Container>
       <MounteElement path="/" element={<Welcome />} />
@@ -29,4 +28,4 @@ const HomeRightPart = () => {
   )
 }
 
-export default HomeRightPart
+export default RightPart
