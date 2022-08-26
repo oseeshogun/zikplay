@@ -42,7 +42,7 @@ const CloseIcon = styled(MdClose)`
   }
 `
 
-const LeftPart = ({ showMobileNav, onToggleSidenav }) => {
+const LeftPart = ({ showMobileNav, showSidenav }) => {
   const { user, setToken } = useContext(zikPlayContext)
 
   const logOut = () => {
@@ -51,7 +51,7 @@ const LeftPart = ({ showMobileNav, onToggleSidenav }) => {
 
   return (
     <Container active={showMobileNav}>
-      <CloseIcon size={30} onClick={onToggleSidenav} />
+      <CloseIcon size={30} onClick={() => showSidenav(false)} />
       <div className={styles.leftTopTitle}>
         <img src={logo} alt="Logo Zikplay" />
         <h1>ZikPlay</h1>
@@ -71,7 +71,11 @@ const LeftPart = ({ showMobileNav, onToggleSidenav }) => {
         <h2>{user == null ? '' : user.display_name}</h2>
       </div>
       <div className={styles.sideBars}>
-        <NavLink to="/" className={styles.navlink} onClick={onToggleSidenav}>
+        <NavLink
+          to="/"
+          className={styles.navlink}
+          onClick={() => showSidenav(false)}
+        >
           {({ isActive }) => (
             <SideBarIcon
               Icon={RiHomeSmile2Line}
@@ -84,7 +88,7 @@ const LeftPart = ({ showMobileNav, onToggleSidenav }) => {
         <NavLink
           to="/library"
           className={styles.navlink}
-          onClick={onToggleSidenav}
+          onClick={() => showSidenav(false)}
         >
           {({ isActive }) => (
             <SideBarIcon
@@ -98,7 +102,7 @@ const LeftPart = ({ showMobileNav, onToggleSidenav }) => {
         <NavLink
           to="/favorites"
           className={styles.navlink}
-          onClick={onToggleSidenav}
+          onClick={() => showSidenav(false)}
         >
           {({ isActive }) => (
             <SideBarIcon

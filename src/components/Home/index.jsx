@@ -3,7 +3,7 @@ import SpotifyPlayer from 'react-spotify-web-playback'
 import styled from 'styled-components'
 import { zikPlayContext } from '../../contexts'
 import styles from '../../styles/Home.module.css'
-import HomeLeftPart from './LeftPart'
+import LeftPart from './LeftPart'
 import RightPart from './RightPart'
 import MobileNavbar from './components/MobileNavbar'
 
@@ -49,16 +49,16 @@ const Home = () => {
     }
   })
 
-  const onToggleSidenav = () => {
-    setShowMobileNav(!showMobileNav)
+  const showSidenav = (show = true) => {
+    setShowMobileNav(show)
   }
 
   return (
     <div className={styles.container}>
-      <MobileNavbar onToggleSidenav={onToggleSidenav} />
-      <HomeLeftPart
+      <MobileNavbar showSidenav={showSidenav} />
+      <LeftPart
         showMobileNav={showMobileNav}
-        onToggleSidenav={onToggleSidenav}
+        showSidenav={showSidenav}
       />
       <RightPart />
       {uri && (

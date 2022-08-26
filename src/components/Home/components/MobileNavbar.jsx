@@ -23,10 +23,14 @@ const LogoImage = styled.img`
   height: 40px;
 `
 
-const MobileNavbar = ({ onToggleSidenav }) => (
+const MobileNavbar = ({ showSidenav }) => (
   <Container>
     <LogoImage src={Logo} alt="Logo Zikplay" />
-    <MdMenu size={30} style={{ cursor: 'pointer' }} onClick={onToggleSidenav} />
+    <MdMenu
+      size={30}
+      style={{ cursor: 'pointer' }}
+      onClick={() => showSidenav()}
+    />
   </Container>
 )
 
